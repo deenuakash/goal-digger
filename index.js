@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import store from "./config/dbStore.js";
 import "./config/db.js";
+import trackRouter from "./routes/trackRouter.js";
 import userRouter from "./routes/userRouter.js";
 
 const app = express();
@@ -27,6 +28,11 @@ app.use(
 
 app.use("/api/user", userRouter);
 
+app.use("/api/track", trackRouter);
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+//Setup auth middlewares
+//work on tracker process
